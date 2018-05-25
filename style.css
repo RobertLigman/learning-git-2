@@ -1,0 +1,24 @@
+body {
+    box-sizing: border-box;
+    background-color: bisque;
+    font-family: 'Kavivanar', cursive;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+
+}
+
+.container h1,
+h2 {
+    text-align: center;
+    color: blue;
+}
+
+.container p {
+    width: 50%;
+    margin: 0 auto;
+    padding-bottom: 15px;
+
+}
