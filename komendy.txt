@@ -1,2 +1,2 @@
 autoprefixer-cli -o style.prefixed.css style.css
-nu-html-checker
+nu-html-checker index.html
