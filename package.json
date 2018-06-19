@@ -1,45 +1,41 @@
 {
-    "name": "learning-git-2",
-    "version": "1.0.0",
-    "description": "https://robertligman.github.io/learning-git-2/",
-    "main": "index.js",
-    "scripts": {
-        "test": "npm run test:html",
-        "test:html": "globstar nu-html-checker *.html",
-
-        "init-project": "npm install && npm run init:dirs && npm run init:files && npm run init:gitignore",
-        "init:dirs": "mkdirp sass css vendor images js",
-        "init:files": "touch README.md index.html sass/style.scss js/script.js",
-        "init:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",
-
-        "build": "npm run build:sass && npm run build:autoprefixer && npm run test",
-        "build:clean": "rimraf css",
-        "build:sass": "node-sass --output-style compact -o css sass",
-        "build:autoprefixer": "autoprefixer-cli css/style.css",
-
-        "build-dev:sass": "node-sass --output-style expanded --source-map true -o css sass",
-
-        "watch": "npm run watch:sass && npm run watch:autoprefixer && npm run watch:browsersync",
-        "watch:sass": "node-sass --output-style expanded --source-map true -o css sass --watch",
-        "watch:autoprefixer": "onchange -d 100 css/style.css autoprefixer-cli -o css/style.prefixed.css css/style.css",
-        "watch:browsersync": "browser-sync start --server --files css/*.css *.html"
-
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/RobertLigman/learning-git-2.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/RobertLigman/learning-git-2/issues"
-    },
-    "homepage": "https://github.com/RobertLigman/learning-git-2#readme",
-    "devDependencies": {
-        "autoprefixer": "^8.5.1",
-        "autoprefixer-cli": "^1.0.0",
-        "browser-sync": "^2.24.4",
-        "nu-html-checker": "^0.1.0",
-        "postcss-cli": "^5.0.0"
-    }
+  "name": "learning-git-2",
+  "version": "1.0.0",
+  "description": "https://robertligman.github.io/learning-git-2/",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm-run-all test:*",
+    "test:html": "globstar nu-html-checker *.html",
+    "init-project": "npm install && npm-run-all init:*",
+    "init:dirs": "mkdirp sass css vendor images js",
+    "init:files": "touch README.md index.html sass/style.scss js/script.js",
+    "init:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",
+    "build": "npm-run-all build:* test",
+    "build:sass": "node-sass --output-style compact -o css sass",
+    "build:autoprefixer": "autoprefixer-cli css/style.css",
+    "build-dev:sass": "node-sass --output-style expanded --source-map true -o css sass",
+    "watch": "npm-run-all build -p watch:*",
+    "watch:sass": "node-sass --output-style expanded --source-map true -o css sass --watch",
+    "watch:autoprefixer": "onchange -d 100 css/style.css -- autoprefixer-cli -o css/style.prefixed.css css/style.css",
+    "watch:browsersync": "browser-sync start --server --files css/*.css *.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobertLigman/learning-git-2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RobertLigman/learning-git-2/issues"
+  },
+  "homepage": "https://github.com/RobertLigman/learning-git-2#readme",
+  "devDependencies": {
+    "autoprefixer": "^8.5.1",
+    "autoprefixer-cli": "^1.0.0",
+    "browser-sync": "^2.24.4",
+    "npm-run-all": "^4.1.3",
+    "nu-html-checker": "^0.1.0",
+    "onchange": "^4.0.0",
+    "postcss-cli": "^5.0.0"
+  }
 }
